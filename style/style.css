@@ -1,0 +1,58 @@
+.navbar{
+    background-color: #10ac84;
+}
+.navbar-brand{
+    color: white;
+}
+.navbar-brand:hover{
+    color: #c8d6e5;
+}
+
+header{
+    margin-top: 2.5%;
+}
+
+.content-wrapper{
+    margin-top: 2%;
+}
+.btn-block{
+    background-color: #10ac84;
+    color: white;
+}
+.btn-block:hover{
+    color: #10ac84;
+    border-color: #10ac84;
+}
+
+.advert-card{
+    width: 18rem;
+}
+.card-link{
+    color: #10ac84;
+}
+.card-link:hover{
+    color: #10ac84;
+}
+.card-btn{
+    background-color: #10ac84;
+    color: white;    
+}
+.card-btn:hover{
+    color: #10ac84;
+    border-color: #10ac84;
+}
+
+.login-card{
+    margin: 13%;
+}
+.login-card-body{
+    margin:3% 15%;
+}
+
+.form-group{
+    margin: 4% 0;
+    padding: 2% 2%;
+}
+.form-group h4{
+    margin-bottom: 5%;
+}
