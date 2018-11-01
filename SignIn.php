@@ -13,7 +13,7 @@ include './include/header.php';
             <form class="container" action="./backend/BackSignIn.php" method="post">
                 <div class="form-group">
                     <label for="SignInUsername">Pseudo</label>
-                    <input type="text" class="form-control" id="SignInUsername" placeholder="Entre ton pseudo ici">
+                    <input type="text" class="form-control" name="SignInUsername" id="SignInUsername" placeholder="Entre ton pseudo ici">
                 </div>
                 <div class="form-group">
                     <label for="SignInPassword">Mot de passe</label>

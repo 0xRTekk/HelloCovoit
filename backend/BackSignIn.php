@@ -10,11 +10,14 @@ if (isset($_POST["SignInButton"]) && empty($_SESSION['user'])) {
     $password = $_POST["SignInPassword"];
     
     //Vérification de l'existance de l'utilisateur
-    $req = "select * from membres where pseudo = '$username' and pass ='$password'";
-    $result = mysqli_query($con, $req);
-    $row = mysqli_fetch_assoc($result);
+    $req = $db->prepare("SELECT * FROM membres WHERE pseudo = :username AND pass = :password");
+    $req->execute(array(
+        'username' => $username,
+        'password' => $password,
+    ));
+    $nbRows = $req->fetchAll();
     
-    if (mysqli_num_rows($result) > 0) {
+    if ($nbRows > 0) {
         $_SESSION["user"] = $username;
         header("Location: ../index.php");
     } else {
