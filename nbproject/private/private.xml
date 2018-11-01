@@ -6,9 +6,9 @@
             <file>file:/C:/wamp64/www/HelloCovoit/include/header.php</file>
             <file>file:/C:/wamp64/www/HelloCovoit/style/style.css</file>
             <file>file:/C:/wamp64/www/HelloCovoit/index.php</file>
-            <file>file:/C:/wamp64/www/HelloCovoit/SignUp.php</file>
-            <file>file:/C:/wamp64/www/HelloCovoit/backend/BackSignUp.php</file>
             <file>file:/C:/wamp64/www/HelloCovoit/db/dbCon.php</file>
+            <file>file:/C:/wamp64/www/HelloCovoit/db/advertSelectAll.php</file>
+            <file>file:/C:/wamp64/www/HelloCovoit/backend/backSignIn.php</file>
         </group>
     </open-files>
 </project-private>

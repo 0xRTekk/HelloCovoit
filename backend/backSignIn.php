@@ -21,7 +21,7 @@ if (isset($_POST["SignInButton"]) && empty($_SESSION['user'])) {
         $_SESSION["user"] = $username;
         header("Location: ../index.php");
     } else {
-        header("Location: ../SignIn.php");
+        header("Location: ../signIn.php");
     }
 }
 ?>

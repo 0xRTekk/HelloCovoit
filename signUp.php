@@ -11,7 +11,7 @@ include './include/header.php';
             <h3>Inscris toi l'ami</h3>
         </div>
         <div class="card-body">
-            <form class="container" action="./backend/BackSignUp.php" method="post">
+            <form class="container" action="./backend/backSignUp.php" method="post">
 
                 <div class="form-group" id="RegistrationFieldAccount">
                     <h4 class="text-center">Informations de compte</h4>

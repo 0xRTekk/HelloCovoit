@@ -33,12 +33,12 @@ if (isset($_GET["Disconnect"]) && !empty($_SESSION['user'])) {
                 <?php
                 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                     ?>
-                    <a href="UserAccount.php" class="btn btn-primary">Ton compte</a>
+                    <a href="userAccount.php" class="btn btn-primary">Ton compte</a>
                     <a href="index.php?Disconnect" class="btn btn-primary">Déconnexion</a>
                 <?php } 
                 else { ?>
-                    <a class="btn btn-primary" href="./SignIn.php">Connexion</a>
-                    <a class="btn btn-secondary" href="./SignUp.php">Inscription</a>
+                    <a class="btn btn-primary" href="signIn.php">Connexion</a>
+                    <a class="btn btn-secondary" href="signUp.php">Inscription</a>
                 <?php } ?>
             </form>
         </nav>

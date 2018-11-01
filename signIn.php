@@ -10,7 +10,7 @@ include './include/header.php';
             <h3>Connecte toi l'ami</h3>
         </div>
         <div class="card-body login-card-body">
-            <form class="container" action="./backend/BackSignIn.php" method="post">
+            <form class="container" action="./backend/backSignIn.php" method="post">
                 <div class="form-group">
                     <label for="SignInUsername">Pseudo</label>
                     <input type="text" class="form-control" name="SignInUsername" id="SignInUsername" placeholder="Entre ton pseudo ici">
