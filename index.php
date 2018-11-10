@@ -11,7 +11,7 @@ include './include/header.php';
 </header>
 
 <section class="container content-wrapper">
-    <a href="#"><button type="button" class="btn btn-lg btn-outline-light btn-block">Proposer un co-voit'</button></a>
+    <a href="addAdvert.php"><button type="button" class="btn btn-lg btn-outline-light btn-block">Proposer un co-voit'</button></a>
 
     <p>Affichage des dernières annonces de co-voiturages<br>
         Lors du clic sur un des liens de co-voiturage : afficher l'annonce complète<br>
@@ -22,7 +22,6 @@ include './include/header.php';
 
 
     <?php
-    include 'db/dbCon.php';
     include 'db/advertSelectAll.php';
 
     foreach ($adverts as $advert) {

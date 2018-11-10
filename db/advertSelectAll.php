@@ -1,11 +1,18 @@
 <?php
 
+//Variables d'environnements. A mettre dans un autre fichier ?
+$asTable = "annonce";
+$asCols = '*';
+$asColWhere ="";
+$asValeurs ="";
+
+include 'dbCon.php';
+
 try {
-    $req = $db->query('SELECT * FROM annonce');
+    $req = $db->query("CALL selectDynam('$asTable', '$asCols', '$asColWhere', '$asValeurs') ");
     $adverts = $req->fetchAll();
 } catch (Exception $exc) {
     echo $exc->getTraceAsString();
 }
-
 
 ?>
