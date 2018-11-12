@@ -1,7 +1,7 @@
 <?php
 
 //Variables d'environnements. A mettre dans un autre fichier ?
-$hostName = "localhost";
+$hostName = "mariadb"; //="mariadb"(nom du conatiner) si utilisation de docker. ="localhost" si utilisation de WAMP
 $dbName = "covoiturage";
 $mysqlUser = "root";
 $mysqlPass ="";
