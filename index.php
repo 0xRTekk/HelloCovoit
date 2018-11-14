@@ -13,14 +13,6 @@ include './include/header.php';
 <section class="container content-wrapper">
     <a href="addAdvert.php"><button type="button" class="btn btn-lg btn-outline-light btn-block">Proposer un co-voit'</button></a>
 
-    <p>Affichage des dernières annonces de co-voiturages<br>
-        Lors du clic sur un des liens de co-voiturage : afficher l'annonce complète<br>
-        Sur l'annonce complète, possibilité de résérver le trajet.<br>
-        Au moment de réserver, vérifier si utilisateur est co. Si non, envoyer sur la page d'inscritpion. La page d'inscription contient un lien "Déjà inscrit ?" qui envoi sur la page de connection
-    </p>
-
-
-
     <?php
     include 'db/advertSelectAll.php';
 

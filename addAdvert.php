@@ -3,8 +3,6 @@ include './include/header.php';
 
 
 
-// Page content  
-
 
 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) { //Possibilité d'ajouter une annonce si déjà connecté
     ?>
@@ -23,13 +21,22 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) { //Possibilité d'aj
                 <label for="arrival">La ville d'arrivée : </label>
                 <input type="text" name="arrival" id="arrival" required="" class="form-control">
 
-                <input type="text" name="author" id="author" value="<?= $_SESSION['user'] ?>" hidden="" >
+                <input type="text" name="author" value="<?= $_SESSION['user'] ?>" hidden="" >
+                
 
                 <label for="date">Quand : </label>
                 <input type="date" name="date" id="date" required="" class="form-control">
-
+                    
+                <input type="time" name="departureTime" class="form-control">
+                
+                <label for="price" >Prix :</label>
+                <input type="number" name="price" id="price" class="form-control">
+                
+                <label for="seats" >Nombre de places :</label>
+                <input type="number" name="seats" id="seats" class="form-control">
+                
                 <label for="description">Description : </label>
-                <textarea name="description" id="description" required="" class="form-control"></textarea>
+                <textarea name="description" id="description" placeholder="Renseignez les indications supplémentaires comme un point de rendez-vous ou autres directives" required="" class="form-control"></textarea>
 
                 <input type="submit" type="button" name="addAdvertButton" class="btn btn-outline-light card-btn form-control" value="Déposer">
             </form>
@@ -39,7 +46,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) { //Possibilité d'aj
     </section>
     <?php
 } else { //Sinon renvoie vers la page de connection 
-    header('Location: ../signIn.php');
+    header('Location: signIn.php');
 }
 ?>
 
