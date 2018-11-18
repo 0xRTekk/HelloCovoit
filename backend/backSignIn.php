@@ -15,10 +15,11 @@ if (isset($_POST["SignInButton"]) && empty($_SESSION['user'])) {
         'username' => $username,
         'password' => $password,
     ));
-    $nbRows = $req->fetchAll();
+    $results = $req->fetch();
     
-    if ($nbRows > 0) {
+    if ($results > 0) {
         $_SESSION["user"] = $username;
+        $_SESSION['email'] = $results['mel'];
         header("Location: ../index.php");
     } else {
         header("Location: ../signIn.php");
