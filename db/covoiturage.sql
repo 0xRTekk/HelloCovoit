@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: db
--- Generation Time: Nov 19, 2018 at 04:13 PM
--- Server version: 10.0.36-MariaDB-1~xenial
--- PHP Version: 7.2.8
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  lun. 19 nov. 2018 à 23:15
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `covoiturage`
+-- Base de données :  `covoiturage`
 --
 
 DELIMITER $$
 --
--- Procedures
+-- Procédures
 --
+DROP PROCEDURE IF EXISTS `InsertAdvert`$$
 CREATE DEFINER=`root`@`%` PROCEDURE `InsertAdvert` (IN `asTable` VARCHAR(50), IN `departure` VARCHAR(100), IN `arrival` VARCHAR(100), IN `author` VARCHAR(50), IN `asDate` DATE, IN `description` TEXT)  begin
 declare cmd varchar(255);
 set @sql = concat('INSERT INTO ',asTable,' (nom_ville_depart, nom_ville_arrive, autheur, date, description) VALUES (',departure,', ',arrival,', ',author,', ',asDate,', ',description,')');
@@ -34,6 +35,7 @@ execute cmd;
 deallocate prepare cmd;
 end$$
 
+DROP PROCEDURE IF EXISTS `SelectAll`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SelectAll` (IN `asTable` VARCHAR(255))  begin
 declare cmd varchar(255);
 set @sql = concat('select * from ',asTable);
@@ -42,6 +44,7 @@ execute cmd;
 deallocate prepare cmd;
 end$$
 
+DROP PROCEDURE IF EXISTS `SelectDynam`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SelectDynam` (IN `asTable` VARCHAR(50), IN `asCols` VARCHAR(255), IN `asColWhere` VARCHAR(255), IN `asValeurs` VARCHAR(255))  begin
 declare cmd varchar(255);
 if asColWhere = '' then
@@ -58,46 +61,50 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `annonce`
+-- Structure de la table `annonce`
 --
 
-CREATE TABLE `annonce` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `annonce`;
+CREATE TABLE IF NOT EXISTS `annonce` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom_ville_depart` varchar(50) NOT NULL,
   `nom_ville_arrive` varchar(50) NOT NULL,
   `autheur` varchar(30) NOT NULL,
   `date` date NOT NULL,
-  `description` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etapes`
+-- Structure de la table `etapes`
 --
 
-CREATE TABLE `etapes` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `etapes`;
+CREATE TABLE IF NOT EXISTS `etapes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `num_trajet` int(11) NOT NULL,
-  `nom_ville_etape` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `nom_ville_etape` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `etapes`
+-- Déchargement des données de la table `etapes`
 --
 
 INSERT INTO `etapes` (`id`, `num_trajet`, `nom_ville_etape`) VALUES
-(1, 6, '0'),
-(2, 7, 'hole'),
-(3, 7, 'hole');
+(7, 1, 'Lyon'),
+(6, 1, 'Dijon');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `membres`
+-- Structure de la table `membres`
 --
 
-CREATE TABLE `membres` (
+DROP TABLE IF EXISTS `membres`;
+CREATE TABLE IF NOT EXISTS `membres` (
   `mel` varchar(50) NOT NULL,
   `pseudo` varchar(20) NOT NULL,
   `pass` varchar(20) NOT NULL,
@@ -111,11 +118,12 @@ CREATE TABLE `membres` (
   `annee_naissance` year(4) NOT NULL,
   `photo` varchar(200) DEFAULT NULL,
   `type` varchar(10) NOT NULL,
-  `confort` varchar(10) NOT NULL
+  `confort` varchar(10) NOT NULL,
+  PRIMARY KEY (`mel`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `membres`
+-- Déchargement des données de la table `membres`
 --
 
 INSERT INTO `membres` (`mel`, `pseudo`, `pass`, `nom`, `prenom`, `tel_mobile`, `sexe`, `fumeur`, `voiture`, `moteur`, `annee_naissance`, `photo`, `type`, `confort`) VALUES
@@ -124,11 +132,12 @@ INSERT INTO `membres` (`mel`, `pseudo`, `pass`, `nom`, `prenom`, `tel_mobile`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trajet`
+-- Structure de la table `trajet`
 --
 
-CREATE TABLE `trajet` (
-  `num_trajet` int(11) NOT NULL,
+DROP TABLE IF EXISTS `trajet`;
+CREATE TABLE IF NOT EXISTS `trajet` (
+  `num_trajet` int(11) NOT NULL AUTO_INCREMENT,
   `depart_ville` varchar(11) NOT NULL,
   `arrivee_ville` varchar(11) NOT NULL,
   `etape1` varchar(255) NOT NULL,
@@ -138,105 +147,71 @@ CREATE TABLE `trajet` (
   `places` int(11) NOT NULL,
   `precisions` text NOT NULL,
   `heure_depart` time NOT NULL,
-  `mel_chauffeur` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `mel_chauffeur` varchar(255) NOT NULL,
+  PRIMARY KEY (`num_trajet`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `trajet`
+-- Déchargement des données de la table `trajet`
 --
 
 INSERT INTO `trajet` (`num_trajet`, `depart_ville`, `arrivee_ville`, `etape1`, `etape2`, `date`, `prix`, `places`, `precisions`, `heure_depart`, `mel_chauffeur`) VALUES
-(1, 'Test1', 'Test2', 'Etape1', 'Etape2', '2018-11-30', 8, 5, 'Test', '15:15:00', 'admin@admin.fr'),
-(2, 'aze', 'aze', 'Test001', 'Test0002', '2018-11-30', 24, 5, 'fqsfc<dqscfz', '15:15:00', 'admin@admin.fr'),
-(3, 'dgfhnf', 'dfbsdf', 'qfbdqsf', 'qsdfbqdfsb', '2018-11-16', 12, 11, 'qfbdfbwesd', '06:04:00', 'admin@admin.fr'),
-(4, 'fsf', 'sff', 'sdf', 'sfdffd', '2018-11-08', 5, 5, 'sdf', '05:04:00', 'admin@admin.fr'),
-(5, 'dgddd', 'ddddddfg', 'dfgdfgdfg', 'dfgdfgdfg', '2018-11-19', 52, 25, '5<w4dfvqs', '15:47:16', 'admin@admin.fr'),
-(6, 'test', 'test', 'Test001', 'Test0002', '2018-11-22', 6, 5, 'etqsdg', '15:45:00', 'admin@admin.fr'),
-(7, 'hole', 'hole', 'hole', 'hole', '2018-12-02', 46, 7, 'qesf', '15:45:00', 'admin@admin.fr');
+(1, 'Paris', 'Marseille', 'Dijon', 'Lyon', '2018-11-19', 30, 3, 'Depart de place d\'Italie\r\nJe dépose au niveau des gares pour les villes étapes\r\nArrivé au port de Marseille', '07:30:00', 'admin@admin.fr');
 
 --
--- Triggers `trajet`
+-- Déclencheurs `trajet`
 --
+DROP TRIGGER IF EXISTS `insertOnEtapes`;
 DELIMITER $$
-CREATE TRIGGER `stepsToRoutes` AFTER INSERT ON `trajet` FOR EACH ROW begin
+CREATE TRIGGER `insertOnEtapes` AFTER INSERT ON `trajet` FOR EACH ROW begin
 INSERT INTO etapes (num_trajet, nom_ville_etape) VALUES (new.num_trajet, new.etape1),
 (new.num_trajet, new.etape2);
 end
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `insertOnVille`;
+DELIMITER $$
+CREATE TRIGGER `insertOnVille` AFTER INSERT ON `trajet` FOR EACH ROW BEGIN
+INSERT INTO ville (depart, arrivee, date_depart, num_trajet)
+VALUES 
+(new.depart_ville, new.arrivee_ville, new.date, new.num_trajet),
+(new.depart_ville, new.etape1, new.date, new.num_trajet),
+(new.depart_ville, new.etape2, new.date, new.num_trajet),
+(new.etape1, new.etape2, new.date, new.num_trajet),
+(new.etape1, new.arrivee_ville, new.date, new.num_trajet),
+(new.etape2, new.arrivee_ville, new.date, new.num_trajet)
+;
+END
 $$
 DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ville`
+-- Structure de la table `ville`
 --
 
-CREATE TABLE `ville` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `ville`;
+CREATE TABLE IF NOT EXISTS `ville` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `depart` varchar(255) NOT NULL,
+  `arrivee` varchar(255) NOT NULL,
+  `num_trajet` int(11) NOT NULL,
+  `date_depart` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Déchargement des données de la table `ville`
 --
 
---
--- Indexes for table `annonce`
---
-ALTER TABLE `annonce`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `etapes`
---
-ALTER TABLE `etapes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `membres`
---
-ALTER TABLE `membres`
-  ADD PRIMARY KEY (`mel`);
-
---
--- Indexes for table `trajet`
---
-ALTER TABLE `trajet`
-  ADD PRIMARY KEY (`num_trajet`);
-
---
--- Indexes for table `ville`
---
-ALTER TABLE `ville`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `annonce`
---
-ALTER TABLE `annonce`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `etapes`
---
-ALTER TABLE `etapes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `trajet`
---
-ALTER TABLE `trajet`
-  MODIFY `num_trajet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `ville`
---
-ALTER TABLE `ville`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `ville` (`id`, `depart`, `arrivee`, `num_trajet`, `date_depart`) VALUES
+(12, 'Lyon', 'Marseille', 1, '2018-11-19'),
+(11, 'Dijon', 'Marseille', 1, '2018-11-19'),
+(10, 'Dijon', 'Lyon', 1, '2018-11-19'),
+(9, 'Paris', 'Lyon', 1, '2018-11-19'),
+(8, 'Paris', 'Dijon', 1, '2018-11-19'),
+(7, 'Paris', 'Marseille', 1, '2018-11-19');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

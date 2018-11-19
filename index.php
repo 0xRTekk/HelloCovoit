@@ -21,7 +21,7 @@ include './include/header.php';
 
         <div class="card advert-card">
             <div class="card-header">
-                <h5 class="card-title text-center"><?= $advert['depart_ville'] ?>/<?= $advert['arrivee_ville'] ?></h5>
+                <h5 class="card-title text-center"><?= $advert['depart_ville'] ?> / <?= $advert['arrivee_ville'] ?></h5>
             </div>
             <div class="card-body">
                 <a href="#"><h6 class="card-subtitle mb-2 text-muted"><?= $advert['mel_chauffeur'] ?></h6></a>
@@ -37,11 +37,6 @@ include './include/header.php';
         <?php
     }
     ?>
-
-
-
-
-
 </section>
 
 

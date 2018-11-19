@@ -27,18 +27,25 @@ if (isset($_GET["Disconnect"]) && !empty($_SESSION['user'])) {
 
         <nav class="navbar justify-content-between">
             <a class="navbar-brand" href="index.php">BelleTable Co-voit'</a>
-
+            
+                <form action="searchRoute.php" method="POST" class="form-inline my-2 my-lg-0">
+                    <label for="searchDeparture"><input type="text" name="searchDeparture" class="form-control col-xs-12" placeholder="Ville de départ"></label>
+                    <label for="searchArrival"><input type="text" name="searchArrival" class="form-control col-xs-12" placeholder="Ville de d'arrivée"></label>
+                    <button type="submit" name="searchButton" class="btn btn-outline-light col-xs-12 col-md-1"><i class="fas fa-search-location"></i></button>
+                </form>
+            
+            
             <form class="form-inline my-2 my-lg-0">
                 <!-- Affichage bouttons Deco & Compte sur user connécté. Sinon affichage bouttons Connexion & inscription -->
                 <?php
                 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                     ?>
-                    <a href="userAccount.php" class="btn btn-primary">Ton compte</a>
-                    <a href="index.php?Disconnect" class="btn btn-primary">Déconnexion</a>
+                    <a href="userAccount.php" class="btn btn-outline-light">Ton compte</a>
+                    <a href="index.php?Disconnect" class="btn btn-outline-light">Déconnexion</a>
                 <?php } 
                 else { ?>
-                    <a class="btn btn-primary" href="signIn.php">Connexion</a>
-                    <a class="btn btn-secondary" href="signUp.php">Inscription</a>
+                    <a class="btn btn-outline-light" href="signIn.php">Connexion</a>
+                    <a class="btn btn-outline-light" href="signUp.php">Inscription</a>
                 <?php } ?>
             </form>
         </nav>
