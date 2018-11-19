@@ -34,8 +34,6 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) { //Possibilité d'aj
                 <label for="step1" >Etape 1 : <input type="text" name="step1" id="step1" class="form-control"></label>
                 
                 <label for="step2" >Etape 2 : <input type="text" name="step2" id="step2" class="form-control"></label>
-                
-                <label for="step3" >Etape 3 : <input type="text" name="step3" id="step3" class="form-control"></label>
                 <br>
                 <br>
                 

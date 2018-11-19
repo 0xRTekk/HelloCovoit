@@ -10,7 +10,7 @@ if (isset($_POST['addRouteButton'])) {
     try {
 //        $req = $db->query("CALL InsertAdvert('$asTable', '$departure', '$arrival', '$author', '$asDate', '$description') ");
 
-        $reqAddRoute = $db->prepare("INSERT INTO " . $routeTable . " (mel_chauffeur, depart_ville, arrivee_ville, date, prix, places, precisions, heure_depart, step1, step2, step3) VALUES (:mel_chauffeur, :depart_ville, :arrivee_ville, :date, :prix, :places, :precisions, :heure_depart, :step1, :step2, :step3)");
+        $reqAddRoute = $db->prepare("INSERT INTO " . $routeTable . " (mel_chauffeur, depart_ville, arrivee_ville, date, prix, places, precisions, heure_depart, etape1, etape2) VALUES (:mel_chauffeur, :depart_ville, :arrivee_ville, :date, :prix, :places, :precisions, :heure_depart, :etape1, :etape2)");
         $reqAddRoute->execute(array(
             'mel_chauffeur' => $_SESSION['email'],
             'depart_ville' => $departure,
@@ -20,10 +20,8 @@ if (isset($_POST['addRouteButton'])) {
             'places' => $seats,
             'precisions' => $description,
             'heure_depart' => $departureTime,
-            'step1' => $step1,
-            'step2' => $step2,
-            'step3' => $step3
-            
+            'etape1' => $step1,
+            'etape2' => $step2
         ));
         
         header('Location: ../index.php');

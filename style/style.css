@@ -27,7 +27,14 @@ header{
 .advert-card{
     width: 18rem;
     margin: 3% 3%;
-    display: inline-block
+    display: inline-block;
+}
+.card-body{
+    padding: 7% 0;
+}
+.card-text{
+    height: 7em;
+    overflow-y: scroll;
 }
 .card-link{
     color: #10ac84;
