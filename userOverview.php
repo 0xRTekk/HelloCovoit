@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 //Fichier fait à la dernière minute. Il faut mettre la requete dans un autre fichier
 

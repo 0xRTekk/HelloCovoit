@@ -1,14 +1,11 @@
 <?php
-session_start();
-
-//Fichier fait à la dernière minute. Il faut mettre la requete dans un autre fichier
+include 'include/header.php';
 
 include 'db/dbCon.php';
 
+//Fichier fait à la dernière minute. Il faut mettre la requete dans un autre fichier
 $req = $db->query("SELECT * FROM membres WHERE pseudo = '" . $_SESSION['user'] . "'");
 $user = $req->fetch();
-
-include 'include/header.php';
 ?>
 
 <section class = "container login-wrapper">
