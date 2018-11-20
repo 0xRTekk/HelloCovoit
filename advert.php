@@ -9,14 +9,14 @@ include 'db/routeSelectId.php';
     <div class="card-header">
         <h2 class="card-title text-center"><?= $advertSelected['depart_ville'] ?>/<?= $advertSelected['arrivee_ville'] ?></h2>
     </div>
-    <div class="card-body">
+    <div class="card-body container">
         <a href="#"><h6 class="card-subtitle mb-2 text-muted"><?= $advertSelected['mel_chauffeur'] ?></h6></a>
-        <p class="card-text">
-            Précisions : <?= $advertSelected['precisions'] ?><br>
-            Etape 1 : <?= $advertSelected['etape1'] ?><br>
-            Etape 2 : <?= $advertSelected['etape2'] ?><br>
-        </p>
-
+        <p>Départ : <?= $advertSelected['depart_ville'] ?></p>
+        <p>Arrivée : <?= $advertSelected['arrivee_ville'] ?></p>
+        <p>Etape 1 : <?= $advertSelected['etape1'] ?></p>
+        <p>Etape 2 : <?= $advertSelected['etape2'] ?></p>
+        <p>Précisions : <?= $advertSelected['precisions'] ?></p>
+        <p>Nombre de places : <?= $advertSelected['places'] ?></p>
         <a href="index.php" class="btn btn-outline-light card-btn center-block">Retourner voir les annonces</a>
         <a href="reservation.php?id=<?= $advertSelected['num_trajet'] ?>" class="btn btn-outline-light card-btn center-block">Réserver ce trajet</a>
     </div>
