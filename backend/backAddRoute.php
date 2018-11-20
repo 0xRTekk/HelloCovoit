@@ -8,8 +8,8 @@ if (isset($_POST['addRouteButton'])) {
     $routeTable = "trajet";
 
     try {
+        // FAIRE LA PROC SERVER
 //        $req = $db->query("CALL InsertAdvert('$asTable', '$departure', '$arrival', '$author', '$asDate', '$description') ");
-
         $reqAddRoute = $db->prepare("INSERT INTO " . $routeTable . " (mel_chauffeur, depart_ville, arrivee_ville, date, prix, places, precisions, heure_depart, etape1, etape2) VALUES (:mel_chauffeur, :depart_ville, :arrivee_ville, :date, :prix, :places, :precisions, :heure_depart, :etape1, :etape2)");
         $reqAddRoute->execute(array(
             'mel_chauffeur' => $_SESSION['email'],

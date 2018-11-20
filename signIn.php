@@ -22,7 +22,7 @@ include './include/header.php';
 
                 <input type="submit" type="button" name="SignInButton" class="btn btn-outline-light card-btn" value="Connexion">
 
-                <div><a href="SignUp.php">Toujours pas de compte chez nous ?</a></div>
+                <div><a href="signUp.php">Toujours pas de compte chez nous ?</a></div>
 
             </form>
         </div>
